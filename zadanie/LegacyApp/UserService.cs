@@ -11,10 +11,7 @@ namespace LegacyApp
                 return false;
             }
 
-            if (!email.Contains("@") && !email.Contains("."))
-            {
-                return false;
-            }
+            if (!Mail(email)) return false;
 
             var now = DateTime.Now;
             int age = now.Year - dateOfBirth.Year;
@@ -66,6 +63,16 @@ namespace LegacyApp
             }
 
             UserDataAccess.AddUser(user);
+            return true;
+        }
+
+        private static bool Mail(string email)
+        {
+            if (!email.Contains("@") && !email.Contains("."))
+            {
+                return false;
+            }
+
             return true;
         }
     }
